@@ -131,6 +131,67 @@
         .links a:hover {
             text-decoration: underline;
         }
+		
+		 /* App Item & Play Store Badge Styling */
+        .app-item {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .app-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .playstore-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--badge-bg);
+            color: var(--badge-text);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: inherit;
+            margin-top: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .playstore-badge:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .playstore-badge svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .badge-text-container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .badge-sub {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .badge-main {
+            font-size: 1rem;
+            font-weight: 700;
+        }
 
         footer {
             text-align: center;
@@ -172,12 +233,65 @@
             <h2>Kishore K</h2>
             <p>Developer | Designer | Creator</p>
         </section>
-
-        <section id="projects">
+		
+		 <section id="projects">
             <h2>Projects</h2>
             <p><strong>Dukaan:</strong> An Offline android app to manage inventory for small merchants, built with kotlin.</p>
-            <p><strong>Puzz:</strong> An Android game with mixed puzzle games.</p>
-			<p><strong>Metronome:</strong> Simple metronome and tuner android app for guitar daily practice.</p>
+        </section>
+
+
+        <!-- New Apps Section -->
+        <section id="apps">
+            <h2>My Mobile Apps</h2>
+            
+            <!-- App 1 Entry -->
+            <div class="app-item">
+                <div class="app-title">📱 Dukaan</div>
+                <p>A simple offline android app for small merchants and general stores, to maintain inventory.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.addendtek.dukaan" class="playstore-badge" target="_blank" rel="noopener noreferrer">
+                    <!-- Embedded SVG Play Store Icon -->
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M5,3.14A1,1,0,0,0,4,4.14V19.86a1,1,0,0,0,1,1,1,1,0,0,0,.54-.16L18.42,12.7a1,1,0,0,0,0-1.4L5.54,3.3A1,1,0,0,0,5,3.14Z"/>
+					</svg>
+
+                    <div class="badge-text-container">
+                        <span class="badge-sub">GET IT ON</span>
+                        <span class="badge-main">Google Play</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- App 2 Entry -->
+            <div class="app-item">
+                <div class="app-title">🚀 Puzz</div>
+                <p>Android app which has mixed puzzles with out ads and subscriptions. </p>
+                <a href="https://play.google.com/store/apps/details?id=com.addendtek.puzz" class="playstore-badge" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M5,3.14A1,1,0,0,0,4,4.14V19.86a1,1,0,0,0,1,1,1,1,0,0,0,.54-.16L18.42,12.7a1,1,0,0,0,0-1.4L5.54,3.3A1,1,0,0,0,5,3.14Z"/>
+					</svg>
+
+                    <div class="badge-text-container">
+                        <span class="badge-sub">GET IT ON</span>
+                        <span class="badge-main">Google Play</span>
+                    </div>
+                </a>
+            </div>
+			
+			<!-- App 3 Entry -->
+            <div class="app-item">
+                <div class="app-title">🚀 Metronome</div>
+                <p>Guitar tuner and metronome for daily guitar practice.</p>
+                <a href="https://play.google.com/store/apps/details?id=com.addendtek.metronome" class="playstore-badge" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+						<path d="M5,3.14A1,1,0,0,0,4,4.14V19.86a1,1,0,0,0,1,1,1,1,0,0,0,.54-.16L18.42,12.7a1,1,0,0,0,0-1.4L5.54,3.3A1,1,0,0,0,5,3.14Z"/>
+					</svg>
+
+                    <div class="badge-text-container">
+                        <span class="badge-sub">GET IT ON</span>
+                        <span class="badge-main">Google Play</span>
+                    </div>
+                </a>
+            </div>
         </section>
 
         <footer>
