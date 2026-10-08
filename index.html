@@ -1,5 +1,128 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addendtek</title>
+    <style>
+        :root {
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --accent-color: #2f81f7; /* GitHub blue */
+            --card-bg: #ffffff;
+            --border-color: #e1e4e8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.2rem;
+        }
+
+        section {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+            list-style: none;
+        }
+
+        .links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            header h1 { font-size: 2rem; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
 <body>
-  <h1>Welcome to Addendtek</h1>
+
+    <div class="container">
+        <header>
+            <h1>Addendtek</h1>
+            <p></p>
+            <ul class="links">
+                <li><a href="https://github.com/bluestreak174">GitHub</a></li>
+                <li><a href="https://linkedin.com">LinkedIn</a></li>
+                <li><a href="kishorebrahma174@gmail.com">Email</a></li>
+            </ul>
+        </header>
+
+        <section id="about">
+            <h2>Hello, I'm Kishore</h2>
+            <p>Developer | Designer | Creator</p>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <p><strong>Awesome Project:</strong> A brief description of something cool you built.</p>
+            <p><strong>Another Project:</strong> Another text block highlighting your skills and experience.</p>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 [Your Name]. Built with plain HTML & CSS.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
