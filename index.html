@@ -5,18 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Addendtek</title>
     <style>
+        /* CSS Custom Properties for Theming */
         :root {
             --bg-color: #f9f9f9;
-            --text-color: #333;
-            --accent-color: #2f81f7; /* GitHub blue */
+            --text-color: #333333;
+            --accent-color: #2f81f7; /* GitHub Blue */
             --card-bg: #ffffff;
             --border-color: #e1e4e8;
+            --muted-text: #666666;
+            --toggle-bg: #e1e4e8;
+        }
+
+        /* Dark Theme Variables */
+        [data-theme="dark"] {
+            --bg-color: #0d1117; /* GitHub Dark BG */
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --card-bg: #161b22;
+            --border-color: #30363d;
+            --muted-text: #8b949e;
+            --toggle-bg: #30363d;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         body {
@@ -30,12 +45,48 @@
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Dark Mode Button Styles */
+        .theme-toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--toggle-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .theme-toggle-btn:hover {
+            opacity: 0.9;
         }
 
         header {
             text-align: center;
             margin-bottom: 40px;
+        }
+
+        /* Profile Image Styles */
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
@@ -44,7 +95,7 @@
         }
 
         header p {
-            color: #666;
+            color: var(--muted-text);
             font-size: 1.2rem;
         }
 
@@ -85,44 +136,97 @@
             text-align: center;
             margin-top: 40px;
             font-size: 0.9rem;
-            color: #666;
+            color: var(--muted-text);
         }
 
-        /* Responsive design */
         @media (max-width: 600px) {
             header h1 { font-size: 2rem; }
             section { padding: 20px; }
+            .profile-img { width: 120px; height: 120px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
+        <!-- Theme Toggle Switch -->
+        <div class="theme-toggle-container">
+            <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle dark mode">
+                <span id="toggleIcon">🌙</span> <span id="toggleText">Dark Mode</span>
+            </button>
+        </div>
+
         <header>
+            <!-- Profile Image Placeholder (Replace with your own link or local asset path) -->
+            <img src="logo.png" alt="Addendtek" class="profile-img">
             <h1>Addendtek</h1>
             <p></p>
             <ul class="links">
                 <li><a href="https://github.com/bluestreak174">GitHub</a></li>
                 <li><a href="https://linkedin.com">LinkedIn</a></li>
-                <li><a href="kishorebrahma174@gmail.com">Email</a></li>
+                <li><a href="mailto:your.email@example.com">Email</a></li>
             </ul>
         </header>
 
         <section id="about">
-            <h2>Hello, I'm Kishore</h2>
+            <h2>Kishore K</h2>
             <p>Developer | Designer | Creator</p>
         </section>
 
         <section id="projects">
             <h2>Projects</h2>
-            <p><strong>Awesome Project:</strong> A brief description of something cool you built.</p>
-            <p><strong>Another Project:</strong> Another text block highlighting your skills and experience.</p>
+            <p><strong>Dukaan:</strong> An Offline android app to manage inventory for small merchants, built with kotlin.</p>
+            <p><strong>Puzz:</strong> Puzzle games.</p>
+			<p><strong>Metronome:</strong> Simple metronome and tuner for guitar daily practice.</p>
         </section>
 
         <footer>
-            <p>&copy; 2026 [Your Name]. Built with plain HTML & CSS.</p>
+            <p>&copy; 2026 Addendtek.</p>
         </footer>
     </div>
 
+    <!-- JavaScript to Handle Theme Toggling & Persistence -->
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const toggleText = document.getElementById('toggleText');
+        
+        // Check for saved theme preference, otherwise use system preference
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            updateToggleUI('dark');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            updateToggleUI('light');
+        }
+
+        // Toggle theme function
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            let newTheme = 'light';
+            
+            if (currentTheme === 'light') {
+                newTheme = 'dark';
+            }
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleUI(newTheme);
+        });
+
+        // Helper function to update button text and icon
+        function updateToggleUI(theme) {
+            if (theme === 'dark') {
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Light Mode';
+            } else {
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Dark Mode';
+            }
+        }
+    </script>
 </body>
 </html>
